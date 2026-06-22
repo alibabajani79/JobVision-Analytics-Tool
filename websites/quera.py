@@ -75,6 +75,7 @@ def fetch_jobs(build_id):
                 "offers_remote": node.get("offers_remote", False),
                 "publish_time": node.get("publish_time", ""),
                 "company_name": company.get("name", ""),
+                "logo": "https://quera.org/" +company.get("logo", ""),
                 "city_name": city.get("name", ""),
                 "technologies": ", ".join(technologies)
             }
@@ -95,7 +96,7 @@ def save_to_csv(jobs, filename):
     
     fieldnames = [
         "id", "title", "level", "collaboration_type", "salary",
-        "offers_remote", "publish_time", "company_name", "city_name", "technologies"
+        "offers_remote", "publish_time", "company_name","logo", "city_name", "technologies"
     ]
     
     with open(filename, "w", newline="", encoding="utf-8-sig") as f:
