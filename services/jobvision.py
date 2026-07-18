@@ -5,12 +5,7 @@ import random
 
 API_URL = "https://candidateapi.jobvision.ir/api/v1/JobPost/List"
 
-CATEGORIES = [
-    "developer",
-    "data-science",
-    "ui-ux",
-    "digital-marketing"
-]
+
 
 HEADERS = {
     "Content-Type": "application/json",
@@ -21,12 +16,7 @@ HEADERS = {
     )
 }
 
-OUTPUT_FILE = "jobvision_jobs.csv"
 
-
-# ----------------------------
-# Parse job
-# ----------------------------
 def parse_job(job):
 
     company = job.get("company", {})
@@ -81,20 +71,19 @@ def parse_job(job):
 
         "expire_date": job.get("expireTime", {}).get("date"),
 
-        "job_url": f"https://jobvision.ir/jobs/{job.get('id')}"
+        "job_url": f"https://jobvision.ir/jobs/{job.get('id')}",
+
+        "raw_data": job,
     }
 
 
-# ----------------------------
-# Fetch page
-# ----------------------------
 def fetch_page(category, page):
 
     payload = {
         "pageSize": 30,
         "requestedPage": page,
         "sortBy": 1,
-        "searchTimeRange": 4,
+        # "searchTimeRange": 4,
         "jobCategoryUrlTitle": category,
     }
 
@@ -110,10 +99,8 @@ def fetch_page(category, page):
     return response.json()
 
 
-# ----------------------------
-# Main
-# ----------------------------
-def main():
+
+def run(CATEGORIES):
 
     all_jobs = []
     seen = set()
@@ -159,26 +146,8 @@ def main():
             print(f"[*] Sleeping {delay}s...\n")
             time.sleep(delay)
 
-    # ----------------------------
-    # Save CSV
-    # ----------------------------
-    if all_jobs:
-
-        with open(OUTPUT_FILE, "w", newline="", encoding="utf-8-sig") as f:
-
-            writer = csv.DictWriter(
-                f,
-                fieldnames=all_jobs[0].keys()
-            )
-
-            writer.writeheader()
-            writer.writerows(all_jobs)
-
-        print(f"\n[✓] Saved {len(all_jobs)} jobs to {OUTPUT_FILE}")
-
-    else:
-        print("[!] No data collected")
+    
+    return(all_jobs)
 
 
-if __name__ == "__main__":
-    main()
+

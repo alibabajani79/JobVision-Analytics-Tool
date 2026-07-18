@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>730</width>
+    <height>430</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Vazir</family>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>شغل چی</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>data-transformation.png</normaloff>data-transformation.png</iconset>
+  </property>
+  <property name="layoutDirection">
+   <enum>Qt::RightToLeft</enum>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #0F172A;</string>
+  </property>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>301</width>
+     <height>411</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QGroupBox#groupBox {
+    background-color: #182235;
+    border: 1px solid #2B3957;
+    border-radius: 18px;
+    margin-top: 18px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    padding-top: 20px;
+}
+
+QGroupBox#groupBox::title {
+    subcontrol-origin: margin;
+    left: 15px;
+    padding: 0 8px;
+}</string>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <widget class="QComboBox" name="catcombo">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>281</width>
+      <height>42</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox#catcombo {
+    background-color: #111827;
+    color: white;
+    border: 2px solid #5B5EF5;
+    border-radius: 12px;
+    padding: 8px 12px;
+    font-size: 13px;
+    min-height: 22px;
+}
+
+QComboBox#catcombo:hover {
+    border:2px solid #7C83FF;
+}
+
+QComboBox#catcombo:focus {
+    border:2px solid #9D8CFF;
+}
+
+QComboBox#catcombo::drop-down {
+    border:0;
+    width:35px;
+}
+
+QComboBox#catcombo::down-arrow {
+    image:none;
+}
+
+QComboBox QAbstractItemView {
+    background:#1B2437;
+    color:white;
+    border:1px solid #5B5EF5;
+    selection-background-color:#5B5EF5;
+    selection-color:white;
+}</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>یک دسته بندی انتخاب کنید...</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="updatecat">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>130</y>
+      <width>281</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#updatecat{
+
+    background:qlineargradient(
+        x1:0,y1:0,x2:1,y2:0,
+        stop:0 #5B3DF5,
+        stop:1 #6D6EFF
+    );
+
+    color:white;
+    border:none;
+    border-radius:14px;
+
+    font-size:14px;
+    font-weight:bold;
+
+    padding:12px;
+}
+
+QPushButton#updatecat:hover{
+    background:#6C63FF;
+}
+
+QPushButton#updatecat:pressed{
+    background:#4E3FD5;
+}</string>
+    </property>
+    <property name="text">
+     <string>آپدیت دسته بندی ها</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>136</x>
+      <y>42</y>
+      <width>141</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">    background-color: #182235;
+color:white;
+    font-size:14px;
+    font-weight:bold;</string>
+    </property>
+    <property name="text">
+     <string> انتخاب دسته بندی :</string>
+    </property>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>190</y>
+      <width>281</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">    background-color: #182235;
+color:white;</string>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>210</y>
+      <width>211</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">    background-color: #182235;
+color:white;
+    font-size:14px;
+    font-weight:bold;</string>
+    </property>
+    <property name="text">
+     <string> عملیات بر اساس دسته بندی :</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="extractdata">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>270</y>
+      <width>281</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#extractdata {
+
+    background: qlineargradient(
+        x1:0, y1:0, x2:1, y2:0,
+        stop:0 #0F9D9A,
+        stop:1 #1DB5A8
+    );
+
+    color: white;
+    border: none;
+    border-radius: 14px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    padding: 12px;
+}
+
+QPushButton#extractdata:hover {
+
+    background: #22C7B8;
+
+}
+
+QPushButton#extractdata:pressed {
+
+    background: #0D7D77;
+
+}
+
+QPushButton#extractdata:disabled {
+
+    background: #3A4A55;
+    color: #9CA3AF;
+
+}</string>
+    </property>
+    <property name="text">
+     <string>استخراج اطلاعات جدید</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="report">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>330</y>
+      <width>281</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#report{
+
+    background:qlineargradient(
+        x1:0,y1:0,x2:1,y2:0,
+        stop:0 #0066FF,
+        stop:1 #3478F6
+    );
+
+    color:white;
+    border:none;
+    border-radius:14px;
+
+    font-size:14px;
+    font-weight:bold;
+
+    padding:12px;
+}
+
+QPushButton#report:hover{
+
+    background:#2A6CFF;
+
+}
+
+QPushButton#report:pressed{
+
+    background:#1557D6;
+
+}</string>
+    </property>
+    <property name="text">
+     <string>گزارش گیری</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>16</x>
+      <y>210</y>
+      <width>51</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">    background-color: #182235;
+color:white;
+    font-size:14px;
+    font-weight:bold;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_2">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>10</y>
+     <width>401</width>
+     <height>411</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QGroupBox#groupBox_2 {
+    background-color: #182235;
+    border: 1px solid #2B3957;
+    border-radius: 18px;
+    margin-top: 18px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    padding-top: 20px;
+}
+
+QGroupBox#groupBox_2::title {
+    subcontrol-origin: margin;
+    left: 15px;
+    padding: 0 8px;
+}</string>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>40</y>
+      <width>211</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">    background-color: #182235;
+color:white;
+    font-size:14px;
+    font-weight:bold;</string>
+    </property>
+    <property name="text">
+     <string> دسته بندی های انتخاب شده : </string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="deleteselectedcat">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>330</y>
+      <width>281</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#deleteselectedcat{
+
+    background:#E5484D;
+
+    color:white;
+
+    border:none;
+
+    border-radius:14px;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    padding:12px;
+
+}
+
+QPushButton#deleteselectedcat:hover{
+
+    background:#FF5A60;
+
+}
+
+QPushButton#deleteselectedcat:pressed{
+
+    background:#C63A40;
+
+}</string>
+    </property>
+    <property name="text">
+     <string>حذف دسته بندی انتخاب شده</string>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="listView">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>81</y>
+      <width>381</width>
+      <height>231</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QListWidget#listView{
+
+    background:#111827;
+
+    border:1px solid #2F3C58;
+
+    border-radius:14px;
+
+    color:white;
+
+    outline:none;
+
+    padding:10px;
+
+    font-size:13px;
+
+}
+
+
+QListWidget#listView::item{
+
+    background:#1F2937;
+
+    border:1px solid #334155;
+
+    border-radius:12px;
+
+    padding:12px;
+
+    margin:5px 2px;
+
+    color:#E5E7EB;
+
+}
+
+
+QListWidget#listView::item:hover{
+
+    background:#28344F;
+
+    border:1px solid #5B5EF5;
+
+}
+
+
+QListWidget#listView::item:selected{
+
+    background:#5B5EF5;
+
+    border:1px solid #818CF8;
+
+    color:white;
+
+}
+
+
+/* Scroll Bar */
+
+QScrollBar:vertical{
+
+    background:#111827;
+
+    width:12px;
+
+    margin:8px 4px 8px 0;
+
+    border-radius:6px;
+
+}
+
+
+QScrollBar::handle:vertical{
+
+    background:#5B5EF5;
+
+    min-height:40px;
+
+    border-radius:6px;
+
+}
+
+
+QScrollBar::handle:vertical:hover{
+
+    background:#818CF8;
+
+}
+
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical{
+
+    height:0px;
+
+}
+
+
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical{
+
+    background:none;
+
+}
+
+
+/* حذف گوشه اضافی اسکرول */
+
+QScrollBar::corner{
+
+    background:transparent;
+
+}</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

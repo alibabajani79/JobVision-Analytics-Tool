@@ -1,0 +1,1207 @@
+
+    <!DOCTYPE html>
+    <html lang="fa" dir="rtl">
+
+    <head>
+
+    <meta charset="UTF-8">
+
+    <title>Job Market Analytics</title>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <style>
+
+    * {
+        box-sizing:border-box;
+        font-family:Tahoma, Arial;
+    }
+
+
+    body {
+        margin:0;
+        background:#f5f7fb;
+        color:#222;
+    }
+
+
+    .sidebar {
+
+        width:260px;
+        height:100vh;
+        position:fixed;
+        right:0;
+        top:0;
+
+        background:#111827;
+        padding:25px;
+
+    }
+
+
+    .sidebar h2 {
+
+        color:white;
+        text-align:center;
+
+    }
+
+
+    .sidebar button {
+
+        width:100%;
+        margin:8px 0;
+        padding:12px;
+
+        border:none;
+        border-radius:10px;
+
+        background:#1f2937;
+        color:white;
+
+        cursor:pointer;
+
+    }
+
+
+    .sidebar button:hover {
+
+        background:#3758f9;
+
+    }
+
+
+
+    .content {
+
+        margin-right:280px;
+        padding:30px;
+
+    }
+
+
+
+    .card {
+
+        background:white;
+        padding:20px;
+
+        border-radius:18px;
+
+        box-shadow:
+        0 5px 20px rgba(0,0,0,.08);
+
+        margin-bottom:20px;
+
+    }
+
+
+
+    .grid {
+
+        display:grid;
+        grid-template-columns:
+        repeat(auto-fit,minmax(250px,1fr));
+
+        gap:20px;
+
+    }
+
+
+
+    .number {
+
+        font-size:35px;
+        font-weight:bold;
+        color:#3758f9;
+
+    }
+
+
+
+    .category {
+
+    display:none;
+
+    }
+
+
+    .active {
+
+    display:block;
+
+    }
+
+
+    canvas {
+
+    max-height:300px;
+
+    }
+
+    </style>
+
+
+    </head>
+
+
+    <body>
+
+
+
+    <div class="sidebar">
+
+    <h2>
+    📊 Job Analytics
+    </h2>
+
+
+    
+        <button onclick="showCategory('0')">
+        آشپز
+        </button>
+        
+        <button onclick="showCategory('1')">
+        بازرگانی / تجارت
+        </button>
+        
+        <button onclick="showCategory('2')">
+        بافنده فرش (قالی باف)
+        </button>
+        
+        <button onclick="showCategory('3')">
+        علوم داده / هوش مصنوعی
+        </button>
+        
+        <button onclick="showCategory('4')">
+        مدیریت بیمه
+        </button>
+        
+
+    </div>
+
+
+
+    <div class="content">
+
+    
+
+    <div id="0" class="category active">
+
+
+    <h1>
+    آشپز
+    </h1>
+
+
+    <div class="grid">
+
+
+    <div class="card">
+    <h3>تعداد آگهی</h3>
+    <div class="number">
+    289
+    </div>
+    </div>
+
+
+
+    <div class="card">
+    <h3>آگهی دارای حقوق</h3>
+
+    <div class="number">
+    203
+    </div>
+
+    </div>
+
+
+
+    <div class="card">
+
+    <h3>میانگین حقوق</h3>
+
+    <div class="number">
+
+    31
+
+    میلیون
+
+    </div>
+
+    </div>
+
+
+    </div>
+
+
+
+    <div class="card">
+
+    <h3>
+    دورکاری و حضوری
+    </h3>
+
+    <canvas id="remote0"></canvas>
+
+    </div>
+
+
+
+
+    <div class="card">
+
+    <h3>
+    جنسیت
+    </h3>
+
+    <canvas id="gender0"></canvas>
+
+    </div>
+
+
+
+
+    <div class="card">
+
+    <h3>
+    نوع همکاری
+    </h3>
+
+
+    <canvas id="work0"></canvas>
+
+
+    </div>
+
+
+
+
+    <div class="card">
+
+    <h3>
+    تجربه کاری
+    </h3>
+
+
+    <canvas id="exp0"></canvas>
+
+
+    </div>
+
+
+    </div>
+
+
+    
+
+    <div id="1" class="category ">
+
+
+    <h1>
+    بازرگانی / تجارت
+    </h1>
+
+
+    <div class="grid">
+
+
+    <div class="card">
+    <h3>تعداد آگهی</h3>
+    <div class="number">
+    1110
+    </div>
+    </div>
+
+
+
+    <div class="card">
+    <h3>آگهی دارای حقوق</h3>
+
+    <div class="number">
+    405
+    </div>
+
+    </div>
+
+
+
+    <div class="card">
+
+    <h3>میانگین حقوق</h3>
+
+    <div class="number">
+
+    47
+
+    میلیون
+
+    </div>
+
+    </div>
+
+
+    </div>
+
+
+
+    <div class="card">
+
+    <h3>
+    دورکاری و حضوری
+    </h3>
+
+    <canvas id="remote1"></canvas>
+
+    </div>
+
+
+
+
+    <div class="card">
+
+    <h3>
+    جنسیت
+    </h3>
+
+    <canvas id="gender1"></canvas>
+
+    </div>
+
+
+
+
+    <div class="card">
+
+    <h3>
+    نوع همکاری
+    </h3>
+
+
+    <canvas id="work1"></canvas>
+
+
+    </div>
+
+
+
+
+    <div class="card">
+
+    <h3>
+    تجربه کاری
+    </h3>
+
+
+    <canvas id="exp1"></canvas>
+
+
+    </div>
+
+
+    </div>
+
+
+    
+
+    <div id="2" class="category ">
+
+
+    <h1>
+    بافنده فرش (قالی باف)
+    </h1>
+
+
+    <div class="grid">
+
+
+    <div class="card">
+    <h3>تعداد آگهی</h3>
+    <div class="number">
+    0
+    </div>
+    </div>
+
+
+
+    <div class="card">
+    <h3>آگهی دارای حقوق</h3>
+
+    <div class="number">
+    0
+    </div>
+
+    </div>
+
+
+
+    <div class="card">
+
+    <h3>میانگین حقوق</h3>
+
+    <div class="number">
+
+    0
+
+    میلیون
+
+    </div>
+
+    </div>
+
+
+    </div>
+
+
+
+    <div class="card">
+
+    <h3>
+    دورکاری و حضوری
+    </h3>
+
+    <canvas id="remote2"></canvas>
+
+    </div>
+
+
+
+
+    <div class="card">
+
+    <h3>
+    جنسیت
+    </h3>
+
+    <canvas id="gender2"></canvas>
+
+    </div>
+
+
+
+
+    <div class="card">
+
+    <h3>
+    نوع همکاری
+    </h3>
+
+
+    <canvas id="work2"></canvas>
+
+
+    </div>
+
+
+
+
+    <div class="card">
+
+    <h3>
+    تجربه کاری
+    </h3>
+
+
+    <canvas id="exp2"></canvas>
+
+
+    </div>
+
+
+    </div>
+
+
+    
+
+    <div id="3" class="category ">
+
+
+    <h1>
+    علوم داده / هوش مصنوعی
+    </h1>
+
+
+    <div class="grid">
+
+
+    <div class="card">
+    <h3>تعداد آگهی</h3>
+    <div class="number">
+    236
+    </div>
+    </div>
+
+
+
+    <div class="card">
+    <h3>آگهی دارای حقوق</h3>
+
+    <div class="number">
+    62
+    </div>
+
+    </div>
+
+
+
+    <div class="card">
+
+    <h3>میانگین حقوق</h3>
+
+    <div class="number">
+
+    58
+
+    میلیون
+
+    </div>
+
+    </div>
+
+
+    </div>
+
+
+
+    <div class="card">
+
+    <h3>
+    دورکاری و حضوری
+    </h3>
+
+    <canvas id="remote3"></canvas>
+
+    </div>
+
+
+
+
+    <div class="card">
+
+    <h3>
+    جنسیت
+    </h3>
+
+    <canvas id="gender3"></canvas>
+
+    </div>
+
+
+
+
+    <div class="card">
+
+    <h3>
+    نوع همکاری
+    </h3>
+
+
+    <canvas id="work3"></canvas>
+
+
+    </div>
+
+
+
+
+    <div class="card">
+
+    <h3>
+    تجربه کاری
+    </h3>
+
+
+    <canvas id="exp3"></canvas>
+
+
+    </div>
+
+
+    </div>
+
+
+    
+
+    <div id="4" class="category ">
+
+
+    <h1>
+    مدیریت بیمه
+    </h1>
+
+
+    <div class="grid">
+
+
+    <div class="card">
+    <h3>تعداد آگهی</h3>
+    <div class="number">
+    257
+    </div>
+    </div>
+
+
+
+    <div class="card">
+    <h3>آگهی دارای حقوق</h3>
+
+    <div class="number">
+    140
+    </div>
+
+    </div>
+
+
+
+    <div class="card">
+
+    <h3>میانگین حقوق</h3>
+
+    <div class="number">
+
+    32
+
+    میلیون
+
+    </div>
+
+    </div>
+
+
+    </div>
+
+
+
+    <div class="card">
+
+    <h3>
+    دورکاری و حضوری
+    </h3>
+
+    <canvas id="remote4"></canvas>
+
+    </div>
+
+
+
+
+    <div class="card">
+
+    <h3>
+    جنسیت
+    </h3>
+
+    <canvas id="gender4"></canvas>
+
+    </div>
+
+
+
+
+    <div class="card">
+
+    <h3>
+    نوع همکاری
+    </h3>
+
+
+    <canvas id="work4"></canvas>
+
+
+    </div>
+
+
+
+
+    <div class="card">
+
+    <h3>
+    تجربه کاری
+    </h3>
+
+
+    <canvas id="exp4"></canvas>
+
+
+    </div>
+
+
+    </div>
+
+
+    
+
+    </div>
+
+
+    <script>
+
+
+    function showCategory(id){
+
+
+    document
+    .querySelectorAll('.category')
+    .forEach(x=>x.classList.remove('active'));
+
+
+    document
+    .getElementById(id)
+    .classList.add('active');
+
+
+    }
+
+
+    
+
+    new Chart(
+    document.getElementById('remote0'),
+    {
+    type:'doughnut',
+
+    data:{
+    labels:[
+    'دورکاری',
+    'حضوری'
+    ],
+
+    datasets:[{
+    data:[
+    1,
+    288
+    ]
+    }]
+
+    }
+
+    }
+    );
+
+
+
+    
+
+    new Chart(
+    document.getElementById('gender0'),
+    {
+    type:'bar',
+
+    data:{
+    labels:['تفاوتی ندارد', 'ترجیحاً آقا', 'ترجیحاً خانم', 'فقط آقا', 'فقط خانم'],
+
+    datasets:[{
+    label:'تعداد',
+    data:[152, 28, 14, 70, 25]
+    }]
+
+    }
+
+    }
+    );
+
+    
+
+    new Chart(
+    document.getElementById('work0'),
+    {
+    type:'bar',
+
+    data:{
+    labels:['تمام وقت', 'تمام وقت یا پاره وقت', 'پاره وقت', 'قراردادی / پروژه ای'],
+
+    datasets:[{
+    label:'تعداد',
+    data:[208, 46, 32, 3]
+    }]
+
+    }
+
+    }
+    );
+
+    
+
+    new Chart(
+    document.getElementById('exp0'),
+    {
+    type:'line',
+
+    data:{
+    labels:[1, 10, 5, 3, 2, 0, 4, 7, 6, 8],
+
+    datasets:[{
+    label:'تعداد آگهی',
+    data:[73, 6, 47, 44, 61, 49, 6, 1, 1, 1]
+    }]
+
+    }
+
+    }
+    );
+
+
+    
+
+    new Chart(
+    document.getElementById('remote1'),
+    {
+    type:'doughnut',
+
+    data:{
+    labels:[
+    'دورکاری',
+    'حضوری'
+    ],
+
+    datasets:[{
+    data:[
+    27,
+    1083
+    ]
+    }]
+
+    }
+
+    }
+    );
+
+
+
+    
+
+    new Chart(
+    document.getElementById('gender1'),
+    {
+    type:'bar',
+
+    data:{
+    labels:['فقط آقا', 'تفاوتی ندارد', 'ترجیحاً خانم', 'ترجیحاً آقا', 'فقط خانم'],
+
+    datasets:[{
+    label:'تعداد',
+    data:[118, 700, 69, 68, 155]
+    }]
+
+    }
+
+    }
+    );
+
+    
+
+    new Chart(
+    document.getElementById('work1'),
+    {
+    type:'bar',
+
+    data:{
+    labels:['تمام وقت', 'تمام وقت یا پاره وقت', 'قراردادی / پروژه ای', 'پاره وقت'],
+
+    datasets:[{
+    label:'تعداد',
+    data:[1045, 30, 19, 16]
+    }]
+
+    }
+
+    }
+    );
+
+    
+
+    new Chart(
+    document.getElementById('exp1'),
+    {
+    type:'line',
+
+    data:{
+    labels:[2, 3, 1, 5, 7, 0, 10, 8, 6, 12, 4, 15, 9],
+
+    datasets:[{
+    label:'تعداد آگهی',
+    data:[239, 339, 129, 215, 25, 44, 48, 9, 9, 3, 46, 3, 1]
+    }]
+
+    }
+
+    }
+    );
+
+
+    
+
+    new Chart(
+    document.getElementById('remote2'),
+    {
+    type:'doughnut',
+
+    data:{
+    labels:[
+    'دورکاری',
+    'حضوری'
+    ],
+
+    datasets:[{
+    data:[
+    0,
+    0
+    ]
+    }]
+
+    }
+
+    }
+    );
+
+
+
+    
+
+    new Chart(
+    document.getElementById('gender2'),
+    {
+    type:'bar',
+
+    data:{
+    labels:[],
+
+    datasets:[{
+    label:'تعداد',
+    data:[]
+    }]
+
+    }
+
+    }
+    );
+
+    
+
+    new Chart(
+    document.getElementById('work2'),
+    {
+    type:'bar',
+
+    data:{
+    labels:[],
+
+    datasets:[{
+    label:'تعداد',
+    data:[]
+    }]
+
+    }
+
+    }
+    );
+
+    
+
+    new Chart(
+    document.getElementById('exp2'),
+    {
+    type:'line',
+
+    data:{
+    labels:[],
+
+    datasets:[{
+    label:'تعداد آگهی',
+    data:[]
+    }]
+
+    }
+
+    }
+    );
+
+
+    
+
+    new Chart(
+    document.getElementById('remote3'),
+    {
+    type:'doughnut',
+
+    data:{
+    labels:[
+    'دورکاری',
+    'حضوری'
+    ],
+
+    datasets:[{
+    data:[
+    31,
+    205
+    ]
+    }]
+
+    }
+
+    }
+    );
+
+
+
+    
+
+    new Chart(
+    document.getElementById('gender3'),
+    {
+    type:'bar',
+
+    data:{
+    labels:['تفاوتی ندارد', 'ترجیحاً آقا', 'فقط آقا', 'فقط خانم', 'ترجیحاً خانم'],
+
+    datasets:[{
+    label:'تعداد',
+    data:[220, 5, 6, 4, 1]
+    }]
+
+    }
+
+    }
+    );
+
+    
+
+    new Chart(
+    document.getElementById('work3'),
+    {
+    type:'bar',
+
+    data:{
+    labels:['تمام وقت', 'تمام وقت یا پاره وقت', 'قراردادی / پروژه ای', 'پاره وقت'],
+
+    datasets:[{
+    label:'تعداد',
+    data:[186, 24, 16, 10]
+    }]
+
+    }
+
+    }
+    );
+
+    
+
+    new Chart(
+    document.getElementById('exp3'),
+    {
+    type:'line',
+
+    data:{
+    labels:[3, 5, 2, 0, 1, 6, 4, 7, 8, 10],
+
+    datasets:[{
+    label:'تعداد آگهی',
+    data:[76, 29, 57, 24, 25, 6, 14, 2, 2, 1]
+    }]
+
+    }
+
+    }
+    );
+
+
+    
+
+    new Chart(
+    document.getElementById('remote4'),
+    {
+    type:'doughnut',
+
+    data:{
+    labels:[
+    'دورکاری',
+    'حضوری'
+    ],
+
+    datasets:[{
+    data:[
+    54,
+    203
+    ]
+    }]
+
+    }
+
+    }
+    );
+
+
+
+    
+
+    new Chart(
+    document.getElementById('gender4'),
+    {
+    type:'bar',
+
+    data:{
+    labels:['تفاوتی ندارد', 'ترجیحاً خانم', 'ترجیحاً آقا', 'فقط خانم', 'فقط آقا'],
+
+    datasets:[{
+    label:'تعداد',
+    data:[195, 23, 10, 22, 7]
+    }]
+
+    }
+
+    }
+    );
+
+    
+
+    new Chart(
+    document.getElementById('work4'),
+    {
+    type:'bar',
+
+    data:{
+    labels:['تمام وقت یا پاره وقت', 'تمام وقت', 'پاره وقت', 'قراردادی / پروژه ای'],
+
+    datasets:[{
+    label:'تعداد',
+    data:[51, 187, 15, 4]
+    }]
+
+    }
+
+    }
+    );
+
+    
+
+    new Chart(
+    document.getElementById('exp4'),
+    {
+    type:'line',
+
+    data:{
+    labels:[0, 1, 2, 3, 5, 4],
+
+    datasets:[{
+    label:'تعداد آگهی',
+    data:[74, 80, 64, 22, 16, 1]
+    }]
+
+    }
+
+    }
+    );
+
+
+    
+
+    </script>
+
+
+    </body>
+
+    </html>
+
+    
